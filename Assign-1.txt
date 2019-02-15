@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+
+<body ng-app="myApp" >
+<div ng-controller="itemsCtrl">
+<p><b><center>Displaying of list of items using ng-repeat</center></b></p>
+<ul>
+<b>Name of Items:</b>
+  <li ng-repeat="x in items">{{x.name}}</li>
+</ul>
+
+<ul>
+<b>Cost of Items:</b>
+  <li ng-repeat="x in items">{{x.cost}}</li>
+</ul>
+
+</div>
+
+<div  ng-controller="items2Ctrl"> 
+<p><b><center>Displaying list of items in table</center></b></p>
+<table border=2 >
+<th>Name</th>
+<th>Cost</th>
+  <tr ng-repeat="x in items">
+    <td>{{ x.name }}</td>
+    <td>{{ x.cost }}</td>
+  </tr>
+</table>
+
+</div>
+
+<div ng-controller="items2Ctrl">
+<p><b><center>Displaying list of items in dropdown</center></b></p>
+<select ng-model="item" ng-options="x.name for x in items">
+</select>
+<table>
+<tr>
+<td>Selected Item:</td><td>{{item.name}}</td></tr>
+<tr><td>Item Cost:</td><td>{{item.cost}}</td></tr>
+</table>
+</div>
+
+<script>
+var app = angular.module('myApp', []);
+
+app.controller('itemsCtrl', function($scope) {
+	var items=[
+    {
+    name : "Hardware Tool",
+    cost : "$300"
+    },
+    {
+    name: "Stationery",
+    cost: "$200"
+    },
+    {
+    name: "Telephone",
+    cost: "$1000"
+    }
+    ]
+    $scope.items = items;
+});
+
+app.controller('items2Ctrl', function($scope) {
+   var items=[
+    {
+    name : "Hardware Tool",
+    cost : "$300"
+    },
+    {
+    name: "Stationery",
+    cost: "$200"
+    },
+    {
+    name: "Telephone",
+    cost: "$1000"
+    }
+    ]
+    $scope.items = items;
+});
+</script>
+</body>
+</html>
